@@ -1,0 +1,50 @@
+<http>
+<!-- include A-Frame obviously -->
+<link rel="stylesheet" href="style.css">
+<script src="aframe.min.js"></script>
+<script src="aframe-ar.js"></script>
+
+<body style='margin : 0px; overflow: hidden;'>
+
+<div style="z-index:2;">
+<a href="https://sayhi2anand.github.io/Hack2017/index.html" >MainView</a>
+</div>  
+<div style="z-index:1;">	
+  <a-scene embedded arjs="trackingMethod: best">
+	  
+	  
+   <a-assets>
+    <a-asset-item id="obj1" src="Detail1.obj"></a-asset-item>
+   
+    <a-asset-item id="mtl" src="str.mtl"></a-asset-item>
+  </a-assets>
+    <!-- create your content here. just a box for now -->
+    
+	<a-entity position='0.9 0.0 -1.0' text="value: Detail 1; color: red; width: 10; align: center;" rotation="-90 0 0" ></a-entity>
+	
+	  <a-entity  position='0.9 0.0 -2.0' 
+		    geometry="primitive: circle; radius: 0.8;"		 
+		    material="side: double; color: blue; opacity: 0.4; transparent: true" 
+		    rotation="-90 0 0">		  
+		  </a-entity>
+ 	<a-obj-model src="#obj1" mtl="#mtl" position='-0.2 0.5 -1.8' scale="0.0012 0.0012 0.0012" rotation="0 0 0" >  </a-obj-model>
+	  
+	  
+	<!-- Using the asset management system. -->
+  <!--<a-obj-model src="#obj" mtl="#mtl" scale="0.00065 0.00065 0.00065" rotation="-90 0 0" > -->
+ <!-- <a-animation attribute="rotation" repeat="indefinite" to="-100 360 0" dur="6000"></a-animation> 
+  </a-obj-model> -->
+  
+	
+    <!-- define a camera which will move according to the marker position -->
+    <a-marker-camera preset='hiro'></a-marker-camera> 
+	 <!-- <a-entity camera look-controls mouse-cursor> -->
+	<!-- <a-camera position="0 0 0"> 
+	<a-cursor color="blue" rotation="-90 0 0"/>
+	</a-camera> -->
+	
+	
+  </a-scene>
+	</div> 
+</body>
+</http>
