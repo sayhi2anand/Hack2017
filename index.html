@@ -2,6 +2,24 @@
 <!-- include A-Frame obviously -->
 <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
 <!-- include ar.js for A-Frame -->
+	<script>
+  AFRAME.registerComponent('change-color-on-hover', {
+    schema: {
+      color: {default: 'red'}
+    },
+    init: function () {
+      var data = this.data;
+      var el = this.el;  // <a-box>
+      var defaultColor = el.getAttribute('material').color;
+      el.addEventListener('mouseenter', function () {
+        el.setAttribute('color', data.color);
+      });
+      el.addEventListener('mouseleave', function () {
+        el.setAttribute('color', defaultColor);
+      });
+    }
+  });
+</script>
 <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 <body style='margin : 0px; overflow: hidden;'>
 
@@ -15,7 +33,11 @@
     <!-- create your content here. just a box for now -->
     <!-- <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box> -->
 	<a-entity position='0.9 0.0 -1.0' text="value: Detail 1; color: red; width: 10; align: center;" rotation="-90 0 0" ></a-entity>
-	  <a-entity position='0.9 0.0 -2.0' geometry="primitive: circle; radius: 0.8;" material="side: double; color: blue; opacity: 0.4; transparent: true" rotation="-90 0 0"></a-entity>
+	  <a-entity position='0.9 0.0 -2.0' 
+		    geometry="primitive: circle; radius: 0.8;"
+		    change-color-on-hover="color: green"
+		    material="side: double; color: blue; opacity: 0.4; transparent: true" 
+		    rotation="-90 0 0"></a-entity>
 	<!-- Using the asset management system. -->
   <!--<a-obj-model src="#obj" mtl="#mtl" scale="0.00065 0.00065 0.00065" rotation="-90 0 0" > -->
  <!-- <a-animation attribute="rotation" repeat="indefinite" to="-100 360 0" dur="6000"></a-animation> 
