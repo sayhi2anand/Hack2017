@@ -16,12 +16,11 @@
   </a-assets>
     <!-- create your content here. just a box for now -->
     <!-- <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box> -->
-	<a-entity position='0.9 0.0 -1.0' text="value: Detail 1; color: red; width: 10; align: center;" rotation="-90 0 0" ></a-entity>
+	<a-entity id="Detail1" position='0.9 0.0 -1.0' text="value: Detail 1; color: red; width: 10; align: center;" rotation="-90 0 0" ></a-entity>
 	
 	  <a-entity  position='0.9 0.0 -2.0' 
 		    geometry="primitive: circle; radius: 0.8;"
-		    event-set__enter="_event: mouseenter; material.color: yellowgreen; scale: 3 1 1"
-             event-set__leave="_event: mouseleave; material.color: skyblue; scale: 1 1 1"
+		    event-set__click="_event: click; _target: #Detail1; visible: false"
 		    material="side: double; color: blue; opacity: 0.4; transparent: true" 
 		    rotation="-90 0 0">
 		  <a-animation attribute="rotation" begin="click" dur="500" fill="backwards" to="30 30 360"></a-animation>
